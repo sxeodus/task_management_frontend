@@ -6,10 +6,10 @@ const TaskForm = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data) => {
-    // Convert empty dueDate to null
-    if (data.dueDate === "") {
-      data.dueDate = null;
-    }
+    // Convert empty strings to null for optional fields
+    if (data.dueDate === "") data.dueDate = null;
+    if (data.description === "") data.description = null;
+    if (data.projectId === "") data.projectId = null;
     await addTask(data);
     reset();
   };
